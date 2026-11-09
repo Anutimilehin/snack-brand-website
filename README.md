@@ -1,65 +1,67 @@
-Jidex Foods Nigeria Limited — Website
+# Jidex Foods Nigeria Limited Website
 
-A modern, responsive, multi-page website concept for a Nigerian food manufacturing brand. This project demonstrates brand presentation, responsive web design, accessible interactions, and client-side routing.
+A responsive, multi-page React website for a Nigerian food-manufacturing brand. This portfolio project demonstrates editorial brand design, accessible interactions, responsive layouts, and client-side routing.
 
-Disclaimer: This is an independent portfolio project created for demonstration purposes. It is not an official commission, partnership, or endorsement by Jidex Foods Nigeria Limited.
+Portfolio Disclaimer: This is an independent portfolio project created as a demonstration of web development skills. It is not an official commission from, partnership with, or endorsement by Jidex Foods Nigeria Limited.
 
 Live Website
 
-Deployment pending: The GitHub Pages link will be added here after the first successful deployment.
+Deployment pending. The live GitHub Pages URL will be added after the first successful deployment.
 
 Project Objectives
 
-* Create a professional online presence for a food manufacturing brand.
-* Showcase the company’s products and brand identity.
-* Present the company’s story, mission, vision, and values.
-* Explain the manufacturing process through a dedicated page.
-* Provide visitors with an accessible way to make enquiries.
-* Demonstrate practical frontend development skills.
+The goal of this project is to demonstrate how a food manufacturing brand can present its identity, products, and business information through a modern website.
 
-Highlights
+The website is designed to help visitors:
 
-* Responsive multi-page website.
-* Clean and modern user interface.
-* Reusable React components.
-* Client-side navigation using React Router.
-* Dedicated product showcase.
-* Company information and manufacturing sections.
-* Contact form with client-side validation.
-* Mobile-friendly layouts and interactions.
-* Static deployment architecture using GitHub Pages.
+* Discover the brand and learn about the company.
+* Explore its range of snack products.
+* Understand its illustrative manufacturing journey.
+* Find relevant company information.
+* Make enquiries through the available contact options.
 
-Technology
+Features
+
+* Multi-page architecture: Five distinct pages with client-side navigation.
+* Responsive design: Layouts adapted for desktop, tablet, and mobile screens.
+* Custom visual identity: A deep-red, warm-cream, white, and charcoal design system.
+* Product showcases: Interactive product details and product presentation.
+* Company information: Dedicated About and Manufacturing pages.
+* Accessible interactions: Keyboard focus states, accessible navigation, and reduced-motion support.
+* Reusable components: Shared layouts and UI components across pages.
+* Contact functionality: A static enquiry form that prepares a prefilled email draft in the visitor’s email application.
+* GitHub Pages support: Configured for static hosting with client-side route fallback.
+
+Technology Stack
 
 Technology	Purpose
-React 19	Frontend user interface
-Vite	Development server and build tool
-React Router DOM	Client-side routing
+React 19	Building the user interface
+Vite 8	Development server and build tooling
+React Router DOM 7	Client-side routing
 JavaScript (JSX)	Application logic and components
-Custom CSS	Styling and responsive layouts
+Custom CSS	Styling, layouts, animations, and responsive design
 ESLint	Code quality and linting
-Git & GitHub	Version control and source code hosting
-GitHub Actions	Automated deployment
+Git & GitHub	Version control and source-code hosting
+GitHub Actions	Deployment automation
 GitHub Pages	Static website hosting
 
-The project uses custom CSS rather than Tailwind utility classes.
+The interface is built using custom CSS rather than Tailwind utility classes.
 
-Website Routes
+Website Pages
 
-Page	Route	Description
-Home	/	Introduces the brand and highlights key content.
-About	/about	Presents the company’s background, mission, vision, and values.
-Products	/products	Showcases the available snack products.
-Manufacturing	/manufacturing	Presents an illustrative overview of the manufacturing journey.
-Contact	/contact	Allows visitors to make enquiries through a prepared email draft.
+Route	Description
+/	Homepage introducing the brand and highlighting its products.
+/about	Company background, founder information, mission, vision, and values.
+/products	Product range and interactive product details.
+/manufacturing	An illustrative overview of the production journey.
+/contact	Contact information and an enquiry form.
 
-Local Development
+Getting Started
 
-Prerequisites
+Requirements
 
-* Node.js
-* npm
-* Git
+* Node.js 20 or later
+* npm 10 or later
 
 Installation
 
@@ -79,201 +81,62 @@ Start the development server:
 
 npm run dev
 
-Open the local URL provided by Vite, usually:
+Vite will provide a local development URL, usually:
 
 http://localhost:5173
 
-Production Builds
+Build and Validation
 
-Build the application for local production:
+Run the following commands to check and build the project:
 
-npm run build
-
-Build the application specifically for GitHub Pages:
-
-npm run build:pages
-
-Run the available checks:
-
+# Check code quality
 npm run lint
+# Create a standard production build
+npm run build
+# Build specifically for GitHub Pages
+npm run build:pages
+# Test GitHub Pages route fallback behaviour
 npm run test:pages-fallback
+
+Production build files are generated in the dist/ directory.
 
 Contact Form
 
-The contact form uses a static mailto: approach to remain compatible with GitHub Pages without requiring a backend service.
+The website uses a fully static mailto: contact form.
 
 When a visitor submits the form:
 
-* The form validates the required fields.
-* A prepared email draft is generated.
-* The visitor’s configured email application opens with the enquiry details.
-* The visitor reviews and sends the email manually.
+1. The browser validates the required fields.
+2. The visitor’s message is formatted into an email draft.
+3. The visitor’s configured email application opens with the recipient, subject, and message populated.
+4. The visitor reviews and sends the email manually.
 
-Important: The website does not send emails automatically.
+The form does not automatically send, store, or transmit messages to a server.
 
-Contact email:
+Contact email: adegokeanutimilehin0@gmail.com
 
-adegokeanutimilehin0@gmail.com
+Direct phone, WhatsApp, and email links are also available on the Contact page.
 
 GitHub Pages Deployment
 
-The project is configured for static hosting through GitHub Pages.
+The project is configured for deployment through GitHub Actions.
+
+The repository uses the following Vite base path:
+
+/snack-brand-website/
 
 Deployment Steps
 
-1. Push the latest project changes to the main branch.
-2. Open the repository on GitHub.
-3. Navigate to Settings → Pages.
-4. Under Build and deployment, select GitHub Actions as the source.
-5. Open the Actions tab.
-6. Run the Deploy static site to GitHub Pages workflow if it has not started automatically.
+1. Push the latest changes to the main branch.
+2. Open the repository’s Settings → Pages.
+3. Set the deployment source to GitHub Actions.
+4. Navigate to the Actions tab.
+5. Select Deploy static site to GitHub Pages.
+6. Run the workflow manually.
 7. Wait for the deployment to complete successfully.
 
-Expected Website URL
+The deployment workflow uses:
 
-https://anutimilehin.github.io/snack-brand-website/
-
-The application is configured to use the correct base path for GitHub Pages.
-
-Client-side routing is supported through a custom 404.html fallback and URL restoration logic, allowing visitors to access and refresh individual pages.
-
-Project Structure
-
-snack-brand-website/
-│
-├── .github/
-│   └── workflows/
-│       └── deploy-pages.yml
-│
-├── public/
-│   └── 404.html
-│
-├── scripts/
-│   └── test-github-pages-fallback.mjs
-│
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── data/
-│   ├── sections/
-│   ├── pages/
-│   ├── App.jsx
-│   └── main.jsx
-│
-├── index.html
-├── package.json
-├── vite.config.js
-├── eslint.config.js
-└── README.md
-
-Some folders may contain additional files and subdirectories.
-
-What This Project Demonstrates
-
-This project demonstrates practical experience with:
-
-* Building responsive interfaces using React.
-* Organising components and application structure.
-* Implementing multi-page navigation.
-* Writing custom CSS for responsive layouts.
-* Managing application builds with Vite.
-* Using Git and GitHub for version control.
-* Preparing a React application for static hosting.
-* Implementing client-side form validation.
-* Troubleshooting deployment and routing challenges.
-
-Project Status
-
-The website is an independent portfolio demonstration project. Its source code is maintained in this repository, with GitHub Pages deployment configured for static hosting.
-A responsive, multi-page React website for a Nigerian food-manufacturing brand. This portfolio project demonstrates editorial brand design, accessible interactions, responsive layouts, and client-side routing.
-
-> This is a portfolio demonstration. It is not an official commission from, or endorsement by, Jidex Foods Nigeria Limited.
-
-## Live website
-
-**Deployment pending:** the GitHub Pages URL will be added here after the first successful deployment.
-
-## Highlights
-
-- Five routes: Home, About, Products, Manufacturing, and Contact
-- Responsive custom CSS with a deep-red, warm-cream, white, and charcoal visual system
-- Accessible header, footer, mobile navigation, keyboard focus states, and reduced-motion support
-- Product detail interactions and route-aware scroll management
-- Responsive, locally hosted image assets
-- A static enquiry form that prepares a prefilled email draft in the visitor’s email application
-
-## Technology
-
-- React 19
-- Vite 8
-- React Router DOM 7
-- JSX and custom CSS
-- Tailwind CSS build tooling, used alongside the project’s custom CSS
-- ESLint for code-quality checks
-- GitHub Actions for manual deployment automation
-- GitHub Pages for static hosting
-
-The application interface is authored with the project’s custom CSS files rather than Tailwind utility classes.
-
-## Routes
-
-| Route | Purpose |
-| --- | --- |
-| `/` | Brand introduction and snack highlights |
-| `/about` | Company story, founder, mission, vision, and commitments |
-| `/products` | Snack range and interactive product details |
-| `/manufacturing` | Illustrative production journey and facilities overview |
-| `/contact` | Direct contact methods and an email-draft enquiry form |
-
-## Local development
-
-### Requirements
-
-- Node.js 20 or later
-- npm 10 or later
-
-### Install and run
-
-```bash
-npm install
-npm run dev
-```
-
-## Production builds
-
-```bash
-# Standard production build
-npm run lint
-npm run build
-
-# GitHub Pages build, including the repository base path
-npm run build:pages
-
-# Verify direct-route fallback behaviour
-npm run test:pages-fallback
-```
-
-Vite writes production files to `dist/`. The directory is generated and excluded from Git.
-
-## Contact form
-
-The contact form is fully static. It validates the required fields in the browser, then prepares an email addressed to `adegokeanutimilehin0@gmail.com` using the visitor’s configured email application.
-
-The form does not send, store, or transmit messages automatically. Visitors must review and send the prepared draft themselves. Direct phone, WhatsApp, and email links remain available as alternatives.
-
-## GitHub Pages deployment
-
-This repository is prepared for the GitHub repository name `snack-brand-website`. A GitHub Pages build uses the Vite base path `/snack-brand-website/`.
-
-1. Rename the GitHub repository to `snack-brand-website`.
-2. Push this project to its `main` branch.
-3. In **Settings → Pages**, set **Source** to **GitHub Actions**.
-4. In the **Actions** tab, run **Deploy static site to GitHub Pages** manually.
-5. After deployment completes, add the published URL to the **Live website** section above.
-
-The workflow builds the site with:
-
-```bash
 npm run build:pages
 ```
 
@@ -291,3 +154,7 @@ src/styles/          Custom CSS and design tokens
 .github/workflows/   Manual GitHub Pages deployment workflow
 scripts/             Dependency-free GitHub Pages fallback test
 ```
+
+## License
+
+See [LICENSE](./LICENSE).
