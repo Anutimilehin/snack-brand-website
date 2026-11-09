@@ -1,0 +1,36 @@
+:root {
+  --color-red: #a91f2a;
+  --color-red-dark: #861821;
+  --color-cream: #fbf6ee;
+  --color-cream-light: #fffdf9;
+  --color-ink: #261d1a;
+  --color-ink-soft: #756a63;
+  --color-line: rgba(69, 44, 34, 0.12);
+  --color-line-strong: rgba(69, 44, 34, 0.24);
+  --color-focus: #d29b32;
+  /* Shared corner scale: small controls through large feature photography. */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-circle: 50%;
+  --motion-fast: 180ms;
+  --motion-medium: 360ms;
+  --motion-reveal: 560ms;
+  --motion-image: 900ms;
+  --motion-exit: 150ms;
+  --motion-ease: cubic-bezier(0.22, 0.68, 0.2, 1);
+  --font-body: "Inter", "Avenir Next", Avenir, sans-serif;
+  --font-display: "Manrope", "Avenir Next", Avenir, sans-serif;
+  --font-heading: var(--font-display);
+  --text-body: 1rem;
+  --text-reading: 0.9375rem;
+  --text-interface: 0.875rem;
+  --text-caption: 0.75rem;
+  --leading-body: 1.65;
+  --leading-heading: 1.08;
+  --weight-body: 400;
+  --weight-interface: 600;
+  --weight-heading: 600;
+}
