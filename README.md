@@ -1,65 +1,112 @@
-# Jidex Foods Nigeria Limited — Website
+# Jidex Foods Nigeria Limited Website
 
-A responsive business website for a Nigerian food manufacturing brand, built
-as a portfolio demonstration of modern React and serverless development.
+A responsive, multi-page React website for a Nigerian food-manufacturing brand. This portfolio project demonstrates editorial brand design, accessible interactions, responsive layouts, and client-side routing.
 
-> **Note:** This is a portfolio project. It is not an official commission
-> from or endorsement by Jidex Foods Nigeria Limited. It is a demonstration
-> of frontend design, responsive layouts, and serverless backend integration.
+> This is a portfolio demonstration. It is not an official commission from, or endorsement by, Jidex Foods Nigeria Limited.
 
----
+## Live website
 
-## Live Demo
+**Deployment pending:** the GitHub Pages URL will be added here after the first successful deployment.
 
-🔗 *(Demo URL will be added after Vercel deployment)*
+## Highlights
 
----
+- Five routes: Home, About, Products, Manufacturing, and Contact
+- Responsive custom CSS with a deep-red, warm-cream, white, and charcoal visual system
+- Accessible header, footer, mobile navigation, keyboard focus states, and reduced-motion support
+- Product detail interactions and route-aware scroll management
+- Responsive, locally hosted image assets
+- A static enquiry form that prepares a prefilled email draft in the visitor’s email application
 
-## Tech Stack
+## Technology
 
-- **React 19** — UI library
-- **Vite** — build tool and development server
-- **Tailwind CSS 4** — utility-first CSS framework
-- **React Router DOM** — client-side routing
-- **Resend** — transactional email for the contact form
-- **Upstash Redis** — distributed rate limiting
-- **Vercel** — deployment platform
+- React 19
+- Vite 8
+- React Router DOM 7
+- JSX and custom CSS
+- Tailwind CSS build tooling, used alongside the project’s custom CSS
+- ESLint for code-quality checks
+- GitHub Actions for manual deployment automation
+- GitHub Pages for static hosting
 
----
+The application interface is authored with the project’s custom CSS files rather than Tailwind utility classes.
 
-## Features
+## Routes
 
-- Fully responsive across mobile, tablet, and desktop
-- Five routed pages: Home, About, Products, Manufacturing, Contact
-- Contact form with server-side email delivery via Resend
-- IP-based rate limiting via Upstash to prevent form abuse
-- Accessible keyboard navigation and skip-to-content link
-- Reduced-motion support for users who prefer minimal animation
-- Scroll-reveal and parallax effects with performance in mind
-- Per-page browser tab metadata
-
----
-
-## Pages
-
-| Route | Description |
+| Route | Purpose |
 | --- | --- |
-| `/` | Home — brand introduction and product highlights |
-| `/about` | Company story, founder, mission, vision, commitments |
-| `/products` | Product range with interactive selection |
-| `/manufacturing` | Production journey, facilities, and food-safety considerations |
-| `/contact` | Contact methods and enquiry form |
+| `/` | Brand introduction and snack highlights |
+| `/about` | Company story, founder, mission, vision, and commitments |
+| `/products` | Snack range and interactive product details |
+| `/manufacturing` | Illustrative production journey and facilities overview |
+| `/contact` | Direct contact methods and an email-draft enquiry form |
 
----
+## Local development
 
-## Local Development
+### Requirements
 
-### Prerequisites
+- Node.js 20 or later
+- npm 10 or later
 
-- Node.js 20+
-- npm 10+
-
-### Install dependencies
+### Install and run
 
 ```bash
 npm install
+npm run dev
+```
+
+## Production builds
+
+```bash
+# Standard production build
+npm run lint
+npm run build
+
+# GitHub Pages build, including the repository base path
+npm run build:pages
+
+# Verify direct-route fallback behaviour
+npm run test:pages-fallback
+```
+
+Vite writes production files to `dist/`. The directory is generated and excluded from Git.
+
+## Contact form
+
+The contact form is fully static. It validates the required fields in the browser, then prepares an email addressed to `adegokeanutimilehin0@gmail.com` using the visitor’s configured email application.
+
+The form does not send, store, or transmit messages automatically. Visitors must review and send the prepared draft themselves. Direct phone, WhatsApp, and email links remain available as alternatives.
+
+## GitHub Pages deployment
+
+This repository is prepared for the GitHub repository name `snack-brand-website`. A GitHub Pages build uses the Vite base path `/snack-brand-website/`.
+
+1. Rename the GitHub repository to `snack-brand-website`.
+2. Push this project to its `main` branch.
+3. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+4. In the **Actions** tab, run **Deploy static site to GitHub Pages** manually.
+5. After deployment completes, add the published URL to the **Live website** section above.
+
+The workflow builds the site with:
+
+```bash
+npm run build:pages
+```
+
+`public/404.html` redirects direct requests for client-side routes back to the app, so refreshing a route such as `/products` works on GitHub Pages.
+
+## Project structure
+
+```text
+public/              Static files, including the GitHub Pages fallback
+src/components/      Shared layout and UI components
+src/data/            Editable page content and image references
+src/pages/           Route-level pages
+src/sections/        Page sections
+src/styles/          Custom CSS and design tokens
+.github/workflows/   Manual GitHub Pages deployment workflow
+scripts/             Dependency-free GitHub Pages fallback test
+```
+
+## License
+
+See [LICENSE](./LICENSE).

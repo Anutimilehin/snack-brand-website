@@ -3,14 +3,14 @@ export const aboutPageContent = {
     eyebrow: 'About Jidex Foods',
     title: ['A Nigerian food', 'manufacturing company.'],
     description:
-      'Jidex Foods Nigeria Limited is a Nigerian food manufacturing company focused on snacks for everyday moments and sharing.',
+      'Jidex Foods Nigeria Limited is a Nigerian food manufacturing company centred on familiar snacks for everyday moments and sharing.',
   },
   story: {
     eyebrow: '01 / Our story',
-    title: 'A company founded on an entrepreneurial ambition.',
+    title: 'A company shaped by entrepreneurial ambition.',
     paragraphs: [
-      'Jidex Foods Nigeria Limited was founded by Olajide Abubakar Rasak, known as Jidex, with an ambition to establish a Nigerian food manufacturing business.',
-      'The company’s focus is on manufacturing snacks for people to enjoy and share. Its story is reflected in the products and decisions that guide its work.',
+      'Jidex Foods Nigeria Limited was founded by Olajide Abubakar Rasak, known as Jidex, with the aim of establishing a Nigerian food manufacturing business.',
+      'The company focuses on snacks for people to enjoy and share. Its direction is reflected in the products it develops and the choices that guide its work.',
     ],
   },
   founder: {
@@ -18,8 +18,8 @@ export const aboutPageContent = {
     name: 'Olajide Abubakar Rasak',
     knownAs: 'Jidex',
     paragraphs: [
-      'Olajide Abubakar Rasak, known as Jidex, founded Jidex Foods Nigeria Limited. His entrepreneurial ambition is to establish a Nigerian company focused on food manufacturing.',
-      'He guides the company’s direction and long-term ambition. Further details about his journey can be added as verified information becomes available.',
+      'Olajide Abubakar Rasak, known as Jidex, founded Jidex Foods Nigeria Limited. He brings an entrepreneurial focus to the company’s work in food manufacturing.',
+      'He guides the company’s direction and long-term ambition. Further details of his journey can be added when verified information is available.',
     ],
   },
   mission: {

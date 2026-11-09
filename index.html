@@ -19,6 +19,26 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Restore a React Router path redirected here by public/404.html on GitHub Pages.
+      // The marker prevents collision with regular website query parameters.
+      (function restoreGitHubPagesRoute(location) {
+        const parameters = new URLSearchParams(location.search)
+        const marker = parameters.get('__jidex_pages_redirect__')
+        const route = parameters.get('__jidex_pages_route__')
+
+        if (marker !== '1' || !route) return
+
+        const basePath = location.pathname.endsWith('/')
+          ? location.pathname.slice(0, -1)
+          : location.pathname
+        const query = parameters.get('__jidex_pages_query__')
+        const hash = parameters.get('__jidex_pages_hash__')
+        const target = `${basePath}${route.startsWith('/') ? route : `/${route}`}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`
+
+        window.history.replaceState(null, '', target)
+      })(window.location)
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

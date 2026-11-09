@@ -1,11 +1,13 @@
 {
-  "name": "first-website",
+  "name": "snack-brand-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:pages": "vite build --mode github-pages",
+    "test:pages-fallback": "node scripts/test-github-pages-fallback.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

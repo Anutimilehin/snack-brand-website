@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages serves this file for unknown paths. Keep the requested
+      // route, query string, and hash, then let index.html restore them.
+      (function redirectToApp(location) {
+        const repositoryPath = '/snack-brand-website'
+        const route = location.pathname.startsWith(repositoryPath)
+          ? location.pathname.slice(repositoryPath.length) || '/'
+          : location.pathname
+        const parameters = new URLSearchParams({
+          __jidex_pages_redirect__: '1',
+          __jidex_pages_route__: route,
+        })
+
+        if (location.search.length > 1) parameters.set('__jidex_pages_query__', location.search.slice(1))
+        if (location.hash.length > 1) parameters.set('__jidex_pages_hash__', location.hash.slice(1))
+
+        location.replace(`${location.origin}${repositoryPath}/?${parameters.toString()}`)
+      })(window.location)
+    </script>
+  </head>
+  <body></body>
+</html>

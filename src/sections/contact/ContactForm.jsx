@@ -1,53 +1,38 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import ScrollReveal from '../../components/ui/ScrollReveal.jsx'
 import { contactDetails, contactPageContent } from '../../data/contactPage.js'
 
 function ContactForm() {
-  const [submissionState, setSubmissionState] = useState('idle')
   const [feedback, setFeedback] = useState('')
-  const submissionInProgress = useRef(false)
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault()
-    if (submissionInProgress.current) return
 
     const form = event.currentTarget
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
     const formData = new FormData(form)
     const details = Object.fromEntries(formData.entries())
+    const subject = `Website enquiry: ${details.enquiryType}`
+    const body = [
+      `Name: ${details.fullName}`,
+      `Email: ${details.email}`,
+      `Phone: ${details.phone}`,
+      `Enquiry type: ${details.enquiryType}`,
+      '',
+      'Message:',
+      details.message,
+    ].join('\n')
+    const parameters = new URLSearchParams({ subject, body })
 
-    submissionInProgress.current = true
-    setSubmissionState('sending')
-    setFeedback('')
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(details),
-      })
-      let result = null
-      try {
-        result = await response.json()
-      } catch {
-        // A proxy or host may return a non-JSON error page; show a helpful fallback below.
-      }
-
-      if (!response.ok || !result?.accepted) {
-        throw new Error(result?.message || 'We could not send your message. Please try again.')
-      }
-
-      form.reset()
-      setSubmissionState('success')
-      setFeedback('Your message was accepted for delivery. Thank you for contacting Jidex Foods.')
-    } catch (error) {
-      setSubmissionState('error')
-      setFeedback(error instanceof Error ? error.message : 'We could not send your message. Please try again.')
-    } finally {
-      submissionInProgress.current = false
-    }
+    // mailto: opens the visitor's configured email application. It does not send an email automatically.
+    window.location.href = `mailto:${contactDetails.email}?${parameters.toString()}`
+    form.reset()
+    setFeedback('Your email application should open with a prepared draft. Please review it and send the message to contact Jidex Foods.')
   }
-
-  const isSending = submissionState === 'sending'
 
   return (
     <div className="contact-form-panel">
@@ -88,25 +73,14 @@ function ContactForm() {
           <textarea name="message" required minLength="5" maxLength="3000" rows="5" placeholder="How can we help?" />
         </label>
 
-        {/* This quiet honeypot helps discard basic automated spam. */}
-        <label className="contact-form-honeypot" aria-hidden="true" tabIndex="-1">
-          Leave this field empty
-          <input name="website" type="text" tabIndex="-1" autoComplete="off" />
-        </label>
-
-        <p className="contact-form-note">Your message is sent securely to our email provider for delivery to the Jidex Foods team.</p>
-        <button className="button button-primary contact-form-submit" type="submit" disabled={isSending}>
-          {isSending ? 'Sending…' : 'Send Message'} <span aria-hidden="true">↗</span>
+        <p className="contact-form-note">Submitting opens a prepared email draft in your email application. Review it, then send it to the Jidex Foods team.</p>
+        <button className="button button-primary contact-form-submit" type="submit">
+          Prepare Email <span aria-hidden="true">↗</span>
         </button>
 
         {feedback && (
-          <div className={`contact-form-feedback contact-form-feedback--${submissionState}`} role={submissionState === 'error' ? 'alert' : 'status'} aria-live="polite">
+          <div className="contact-form-feedback contact-form-feedback--success" role="status" aria-live="polite">
             <p>{feedback}</p>
-            {submissionState === 'error' && (
-              <p>
-                You can also call <a href={contactDetails.phoneLink}>{contactDetails.phoneDisplay}</a> or email <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>.
-              </p>
-            )}
           </div>
         )}
       </ScrollReveal>
